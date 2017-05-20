@@ -12,11 +12,15 @@ class ConnectWindow : public QMainWindow
     Q_OBJECT
 
 public:
+
     explicit ConnectWindow(QWidget *parent = 0);
     ~ConnectWindow();
 
 private:
-    Ui::ConnectWindow *ui;
+
+    Ui::ConnectWindow* ui;
+
+    void initUi();
 };
 
 #endif // CONNECTWINDOW_H

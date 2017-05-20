@@ -1,11 +1,10 @@
 #include <QApplication>
-#include "client.h"
+#include "gui/connectwindow.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    QGuiApplication::setApplicationDisplayName(Client::tr("Fortune Client"));
-    Client client;
-    client.show();
+    ConnectWindow cw;
+    cw.show();
     return app.exec();
 }
