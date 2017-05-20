@@ -27,11 +27,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 HEADERS += \
     client.h \
-    gui/connectwindow.h \
-    ui_connectwindow.h
+    gui/connectwindow.h
 
 FORMS += \
     gui/connectwindow.ui
-
-DISTFILES += \
-    .qmake.stash
