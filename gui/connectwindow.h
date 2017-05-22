@@ -8,6 +8,7 @@
 #include <QTextStream>
 #include <QDataStream>
 #include <QNetworkSession>
+#include <QThread>
 #include <string>
 #include <exception>
 

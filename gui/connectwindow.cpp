@@ -13,7 +13,7 @@ QString nextFortune;
 
 ConnectWindow::ConnectWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::ConnectWindow), tSock(new QTcpSocket(this)), netSesh(Q_NULLPTR)
+    ui(new Ui::ConnectWindow), tSock(new QTcpSocket(this))
 {
     in.setDevice(tSock);
     in.setVersion(QDataStream::Qt_4_0);
@@ -66,26 +66,26 @@ void ConnectWindow::on_connectButton_clicked()
     in.setDevice(tSock);
     in.setVersion(QDataStream::Qt_4_0);
 
-        out << tSock->state() <<endl;
+    in.startTransaction();
+    in >> nextFortune;
+    out << nextFortune << endl;
+    statusBar()->showMessage(tSock->errorString(), 0);
 
-        in.startTransaction();
-        in >> nextFortune;
-        out << nextFortune << endl;
-
-        tSock ->disconnect();
+    out << tSock->state() <<endl;
 
     out.flush();
 
 }
 
 void ConnectWindow::on_sendButton_clicked()
-{
-    int a = 1;
+{  
+    tSock ->disconnectFromHost();
+    statusBar()->clearMessage();
 }
 
 //When clicking Exit
 void ConnectWindow::on_exitButton_clicked()
 {
-    tSock ->disconnect();
+    tSock ->abort();
     QCoreApplication::quit();
 }
