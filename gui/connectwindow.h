@@ -2,10 +2,14 @@
 #define CONNECTWINDOW_H
 
 #include <QMainWindow>
+#include <QTcpSocket>
 #include <QPushButton>
 #include <QLineEdit>
 #include <QTextStream>
+#include <QDataStream>
+#include <QNetworkSession>
 #include <string>
+#include <exception>
 
 namespace Ui {
 class ConnectWindow;
@@ -27,6 +31,7 @@ public:
 private slots:
     void quitOnX();
     void on_connectButton_clicked();
+    void on_sendButton_clicked(); //Do not forget
     void on_exitButton_clicked();
 
 
@@ -36,6 +41,9 @@ private:
     static QString ipAddress;
     static QString portNumb;
     static QString playerName;
+    QTcpSocket *tSock;
+    QDataStream in;
+    QNetworkSession *netSesh;
 
 };
 

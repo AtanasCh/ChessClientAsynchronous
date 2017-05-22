@@ -7,11 +7,16 @@
 extern QString ConnectWindow::ipAddress;
 extern QString ConnectWindow::portNumb;
 extern QString ConnectWindow::playerName;
+extern QDataStream in;
+extern QTcpSocket *tSock;
+QString nextFortune;
 
 ConnectWindow::ConnectWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::ConnectWindow)
+    ui(new Ui::ConnectWindow), tSock(new QTcpSocket(this)), netSesh(Q_NULLPTR)
 {
+    in.setDevice(tSock);
+    in.setVersion(QDataStream::Qt_4_0);
     ui->setupUi(this);
 }
 
@@ -23,6 +28,7 @@ ConnectWindow::~ConnectWindow()
 
 void ConnectWindow::quitOnX()
 {
+    tSock ->disconnect();
     QCoreApplication::quit();
 }
 
@@ -54,11 +60,32 @@ void ConnectWindow::on_connectButton_clicked()
     out << ipAddress << endl;
     out << portNumb << endl;
     out << playerName << endl;
+
+
+    tSock ->connectToHost(ipAddress, portNumb.toShort());
+    in.setDevice(tSock);
+    in.setVersion(QDataStream::Qt_4_0);
+
+        out << tSock->state() <<endl;
+
+        in.startTransaction();
+        in >> nextFortune;
+        out << nextFortune << endl;
+
+        tSock ->disconnect();
+
     out.flush();
+
+}
+
+void ConnectWindow::on_sendButton_clicked()
+{
+    int a = 1;
 }
 
 //When clicking Exit
 void ConnectWindow::on_exitButton_clicked()
 {
+    tSock ->disconnect();
     QCoreApplication::quit();
 }
