@@ -73,9 +73,13 @@ FORMS += \
     gui/connectwindow.ui \
     gui/choosepiecewindow.ui \
     gui/gameoptionswindow.ui \
+    mainwindow.ui \
+    gui/choosepiecewindow.ui \
+    gui/gameoptionswindow.ui \
     mainwindow.ui
 
 RESOURCES += \
+    gui/resource_pieces_images.qrc \
     gui/resource_pieces_images.qrc
 
 DISTFILES += \
@@ -92,4 +96,17 @@ DISTFILES += \
     gui/Images/PeshkaW.png \
     gui/Images/TopB.png \
     gui/Images/TopW.png \
-    .gitignore
+    .gitignore \
+    gui/Images/Thumbs.db \
+    gui/Images/CarB.png \
+    gui/Images/CarW.png \
+    gui/Images/DamaB.png \
+    gui/Images/DamaW.png \
+    gui/Images/KonB.png \
+    gui/Images/KonW.png \
+    gui/Images/OficerB.png \
+    gui/Images/OficerW.png \
+    gui/Images/PeshkaB.png \
+    gui/Images/PeshkaW.png \
+    gui/Images/TopB.png \
+    gui/Images/TopW.png

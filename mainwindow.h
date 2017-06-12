@@ -11,7 +11,6 @@
 #include "chess-logic/controller.h"
 #include "gui/cellbutton.h"
 #include "gui/uihelperfunc.h"
-//#include "ai.h"
 
 namespace Ui {
 class MainWindow;

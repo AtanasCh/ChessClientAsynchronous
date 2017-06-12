@@ -10,8 +10,8 @@ int main(int argc, char *argv[])
     cw.show();
 
     // shows offline game menu
-    //MainWindow w;
-    //w.show();
+    MainWindow w;
+    w.show();
 
     return app.exec();
 }
