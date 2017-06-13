@@ -32,9 +32,11 @@ public:
 private slots:
     void quitOnX();
     void on_connectButton_clicked();
-    void on_sendButton_clicked(); //Do not forget
+    void on_sendButton_clicked(); //TODO Do not forget
     void on_exitButton_clicked();
 
+
+    void on_sendButton_pressed();
 
 private:
     Ui::ConnectWindow* ui;
@@ -45,6 +47,7 @@ private:
     QTcpSocket *tSock;
     QDataStream in;
     QNetworkSession *netSesh;
+    QDataStream out;
 
 };
 

@@ -2,6 +2,7 @@
 #include "ui_connectwindow.h"
 
 #include <QSignalMapper>
+#include <iostream> // TODO remove , debugging purposes
 
 
 extern QString ConnectWindow::ipAddress;
@@ -15,8 +16,6 @@ ConnectWindow::ConnectWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::ConnectWindow), tSock(new QTcpSocket(this))
 {
-    in.setDevice(tSock);
-    in.setVersion(QDataStream::Qt_4_0);
     ui->setupUi(this);
 }
 
@@ -28,7 +27,7 @@ ConnectWindow::~ConnectWindow()
 
 void ConnectWindow::quitOnX()
 {
-    tSock ->disconnect();
+    tSock->disconnect();
     QCoreApplication::quit();
 }
 
@@ -53,39 +52,32 @@ QString ConnectWindow::getPlayerName()
 void ConnectWindow::on_connectButton_clicked()
 {
     //Instead of printing, use sockets to connect.
-    QString ipAddress = ui->ipField->text();
-    QString portNumb = ui->portField->text();
-    QString playerName = ui->nameField->text();
-    QTextStream out(stdout);
-    out << ipAddress << endl;
-    out << portNumb << endl;
-    out << playerName << endl;
+    ipAddress = ui->ipField->text();
+    portNumb = ui->portField->text();
+    playerName = ui->nameField->text();
 
+    QByteArray block;
+    QDataStream out(&block, QIODevice::WriteOnly);
+    out.setVersion(QDataStream::Qt_4_0);
+    out << playerName;
 
-    tSock ->connectToHost(ipAddress, portNumb.toShort());
-    in.setDevice(tSock);
-    in.setVersion(QDataStream::Qt_4_0);
-
-    in.startTransaction();
-    in >> nextFortune;
-    out << nextFortune << endl;
-    statusBar()->showMessage(tSock->errorString(), 0);
-
-    out << tSock->state() <<endl;
-
-    out.flush();
-
+    tSock->connectToHost(ipAddress, portNumb.toInt());
+    tSock->waitForConnected();
+    tSock->write(block);
+    tSock->flush();
 }
 
 void ConnectWindow::on_sendButton_clicked()
 {  
+    std::cout << "send "; // TODO delete
     tSock ->disconnectFromHost();
     statusBar()->clearMessage();
 }
 
-//When clicking Exit
+// When clicking Exit
 void ConnectWindow::on_exitButton_clicked()
 {
+    std::cout << "exit"; // TODO delete
     tSock ->abort();
     QCoreApplication::quit();
 }

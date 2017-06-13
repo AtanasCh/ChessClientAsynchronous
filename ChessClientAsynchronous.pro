@@ -112,4 +112,6 @@ DISTFILES += \
     gui/Images/PeshkaB.png \
     gui/Images/PeshkaW.png \
     gui/Images/TopB.png \
-    gui/Images/TopW.png
+    gui/Images/TopW.png \
+    object_script.ChessClientAsynchronous.Debug \
+    object_script.ChessClientAsynchronous.Release
