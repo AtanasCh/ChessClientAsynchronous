@@ -22,6 +22,7 @@ INPUT(
 ./release\rook.o
 ./release\mainwindow.o
 ./release\localoronline.o
+./release\lobby.o
 ./release\qrc_resource_pieces_images.o
 ./release\moc_client.o
 ./release\moc_connectwindow.o
@@ -29,4 +30,5 @@ INPUT(
 ./release\moc_gameoptionswindow.o
 ./release\moc_mainwindow.o
 ./release\moc_localoronline.o
+./release\moc_lobby.o
 );

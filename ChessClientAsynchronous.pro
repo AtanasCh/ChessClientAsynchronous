@@ -32,7 +32,8 @@ SOURCES += main.cpp \
     pieces/queen.cpp \
     pieces/rook.cpp \
     mainwindow.cpp \
-    gui/localoronline.cpp
+    gui/localoronline.cpp \
+    gui/lobby.cpp
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -69,7 +70,8 @@ HEADERS += \
     pieces/queen.h \
     pieces/rook.h \
     mainwindow.h \
-    gui/localoronline.h
+    gui/localoronline.h \
+    gui/lobby.h
 
 FORMS += \
     gui/connectwindow.ui \
@@ -79,7 +81,8 @@ FORMS += \
     gui/choosepiecewindow.ui \
     gui/gameoptionswindow.ui \
     mainwindow.ui \
-    gui/localoronline.ui
+    gui/localoronline.ui \
+    gui/lobby.ui
 
 RESOURCES += \
     gui/resource_pieces_images.qrc \

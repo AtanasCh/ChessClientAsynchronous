@@ -1,5 +1,7 @@
 #include "connectwindow.h"
 #include "ui_connectwindow.h"
+#include "lobby.h"
+#include "ui_lobby.h"
 
 #include <QSignalMapper>
 #include <iostream> // TODO remove , debugging purposes
@@ -57,13 +59,12 @@ void ConnectWindow::on_connectButton_clicked()
     playerName = ui->nameField->text();
 
     QByteArray block;
-    QDataStream out(&block, QIODevice::WriteOnly);
-    out.setVersion(QDataStream::Qt_4_0);
-    out << playerName;
 
     tSock->connectToHost(ipAddress, portNumb.toInt());
     tSock->waitForConnected();
-    tSock->write(block);
+
+    Lobby *lob = new Lobby;
+    lob->show();
     tSock->flush();
 }
 

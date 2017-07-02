@@ -22,6 +22,7 @@ INPUT(
 ./debug\rook.o
 ./debug\mainwindow.o
 ./debug\localoronline.o
+./debug\lobby.o
 ./debug\qrc_resource_pieces_images.o
 ./debug\moc_client.o
 ./debug\moc_connectwindow.o
@@ -29,4 +30,5 @@ INPUT(
 ./debug\moc_gameoptionswindow.o
 ./debug\moc_mainwindow.o
 ./debug\moc_localoronline.o
+./debug\moc_lobby.o
 );

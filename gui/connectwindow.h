@@ -35,9 +35,6 @@ private slots:
     void on_sendButton_clicked(); //TODO Do not forget
     void on_exitButton_clicked();
 
-
-    void on_sendButton_pressed();
-
 private:
     Ui::ConnectWindow* ui;
 
