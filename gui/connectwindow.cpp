@@ -2,6 +2,7 @@
 #include "ui_connectwindow.h"
 #include "lobby.h"
 #include "ui_lobby.h"
+#include "mainwindow.h"
 
 #include <QSignalMapper>
 #include <iostream> // TODO remove , debugging purposes
@@ -9,7 +10,6 @@
 
 extern QString ConnectWindow::ipAddress;
 extern QString ConnectWindow::portNumb;
-extern QString ConnectWindow::playerName;
 extern QDataStream in;
 extern QTcpSocket *tSock;
 QString nextFortune;
@@ -43,11 +43,6 @@ QString ConnectWindow::getPortNumb()
 {
     return portNumb;
 }
-
-QString ConnectWindow::getPlayerName()
-{
-    return playerName;
-}
 //
 
 //When clicking Connect
@@ -56,23 +51,15 @@ void ConnectWindow::on_connectButton_clicked()
     //Instead of printing, use sockets to connect.
     ipAddress = ui->ipField->text();
     portNumb = ui->portField->text();
-    playerName = ui->nameField->text();
 
     QByteArray block;
 
     tSock->connectToHost(ipAddress, portNumb.toInt());
     tSock->waitForConnected();
 
-    Lobby *lob = new Lobby;
-    lob->show();
+    MainWindow *mw = new MainWindow;
+    mw -> show();
     tSock->flush();
-}
-
-void ConnectWindow::on_sendButton_clicked()
-{  
-    std::cout << "send "; // TODO delete
-    tSock ->disconnectFromHost();
-    statusBar()->clearMessage();
 }
 
 // When clicking Exit

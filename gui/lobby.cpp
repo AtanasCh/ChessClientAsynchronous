@@ -11,6 +11,5 @@ Lobby::Lobby(QWidget *parent) :
 
 Lobby::~Lobby()
 {
-    ConnectWindow::tSock->close();
     delete ui;
 }

@@ -26,13 +26,12 @@ public:
 
     static QString getIpAddress();
     static QString getPortNumb();
-    static QString getPlayerName();
+    QTcpSocket *tSock;
 
 
 private slots:
     void quitOnX();
     void on_connectButton_clicked();
-    void on_sendButton_clicked(); //TODO Do not forget
     void on_exitButton_clicked();
 
 private:
@@ -40,8 +39,7 @@ private:
 
     static QString ipAddress;
     static QString portNumb;
-    static QString playerName;
-    QTcpSocket *tSock;
+
     QDataStream in;
     QNetworkSession *netSesh;
     QDataStream out;

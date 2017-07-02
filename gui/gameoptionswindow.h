@@ -39,6 +39,8 @@ private slots:
     void on_lineEdit_firstPlayer_textChanged(const QString &arg1);
     void on_lineEdit_secondPlayer_textChanged(const QString &arg1);
 
+    void on_buttonBox_clicked(QAbstractButton *button);
+
 private:
     Ui::GameOptionsWindow* ui;
 
