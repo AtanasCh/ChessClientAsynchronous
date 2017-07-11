@@ -1,6 +1,7 @@
 QT += core
 QT -= gui
 QT += network widgets
+QT += sql
 
 CONFIG += c++11
 
@@ -33,7 +34,32 @@ SOURCES += main.cpp \
     pieces/rook.cpp \
     mainwindow.cpp \
     gui/localoronline.cpp \
-    gui/lobby.cpp
+    gui/lobby.cpp \
+    chess-logic/checkchecker.cpp \
+    chess-logic/controller.cpp \
+    chess-logic/specialmoveshandler.cpp \
+    chess-state/cell.cpp \
+    chess-state/player.cpp \
+    chess-state/state.cpp \
+    chess-utils/coordinate.cpp \
+    gui/cellbutton.cpp \
+    gui/choosepiecewindow.cpp \
+    gui/connectwindow.cpp \
+    gui/gameoptionswindow.cpp \
+    gui/lobby.cpp \
+    gui/localoronline.cpp \
+    gui/uihelperfunc.cpp \
+    pieces/bishop.cpp \
+    pieces/king.cpp \
+    pieces/knight.cpp \
+    pieces/pawn.cpp \
+    pieces/piece.cpp \
+    pieces/queen.cpp \
+    pieces/rook.cpp \
+    postgresql/database.cpp \
+    client.cpp \
+    main.cpp \
+    mainwindow.cpp
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -71,7 +97,33 @@ HEADERS += \
     pieces/rook.h \
     mainwindow.h \
     gui/localoronline.h \
-    gui/lobby.h
+    gui/lobby.h \
+    chess-logic/checkchecker.h \
+    chess-logic/controller.h \
+    chess-logic/specialmoveshandler.h \
+    chess-state/cell.h \
+    chess-state/gametype.h \
+    chess-state/player.h \
+    chess-state/state.h \
+    chess-utils/color.h \
+    chess-utils/coordinate.h \
+    gui/cellbutton.h \
+    gui/choosepiecewindow.h \
+    gui/connectwindow.h \
+    gui/gameoptionswindow.h \
+    gui/lobby.h \
+    gui/localoronline.h \
+    gui/uihelperfunc.h \
+    pieces/bishop.h \
+    pieces/king.h \
+    pieces/knight.h \
+    pieces/pawn.h \
+    pieces/piece.h \
+    pieces/queen.h \
+    pieces/rook.h \
+    postgresql/database.h \
+    client.h \
+    mainwindow.h
 
 FORMS += \
     gui/connectwindow.ui \
